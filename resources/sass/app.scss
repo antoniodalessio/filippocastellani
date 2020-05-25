@@ -1,0 +1,238 @@
+//
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,800);
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('icomoon.eot?spznif');
+  src:  url('icomoon.eot?spznif#iefix') format('embedded-opentype'),
+    url('icomoon.ttf?spznif') format('truetype'),
+    url('icomoon.woff?spznif') format('woff'),
+    url('icomoon.svg?spznif#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-ancora_intera:before {
+  content: "\e903";
+}
+.icon-favicon:before {
+  content: "\e904";
+}
+.icon-behance:before {
+  content: "\e905";
+}
+.icon-instagram:before {
+  content: "\e906";
+}
+.icon-rosa:before {
+  content: "\e907";
+}
+.icon-logo:before {
+  content: "\e900";
+}
+.icon-chiudi:before {
+  content: "\e901";
+}
+.icon-hamburger:before {
+  content: "\e902";
+}
+
+// Variables
+@import "reset";
+@import "variables";
+
+
+@import "node_modules/slick-carousel/slick/slick.scss";
+
+$margin-body-desktop: 20px;
+$margin-body-mobile: 5%;
+$logo-height: 51px;
+$headerHeight: 90px;
+$footerHeight: 18px;
+
+$tablet: 1367px;
+$mobile: 480px;
+
+body {
+	background-color: $body-bg;
+	color: black;
+  font-family: 'Open Sans', sans-serif;
+  padding: $margin-body-desktop;
+  @media only screen and (max-width: $mobile) {
+    padding: $margin-body-mobile;
+  }
+}
+
+hr {
+  background-color: black;
+  height: 1px;
+  border: 0;
+}
+
+strong {
+  font-weight: 700;
+}
+
+@import "header";
+
+
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - #{$headerHeight} - #{$footerHeight});
+  @media only screen and (max-width: $tablet) {
+    flex-direction: column;
+    height: inherit;
+  }
+  @media only screen and (max-width: $mobile) {
+    height: inherit;
+  }
+
+  .bigtext__container {
+    display: none;
+    height: calc(100vh - #{$headerHeight});
+    .bigtext__text {
+      position: relative;
+      font-size: 5vw;
+      margin-bottom: $headerHeight;
+    }
+    @media only screen and (max-width: $tablet) and (min-width: $mobile) {
+      display: flex;
+      align-items: center;
+    }
+    .arrow-down {
+      position: absolute;
+      bottom: 30px;
+      left: 0;
+      width: 5vw;
+      height: calc(5vw / 0.6);
+      max-width: 40px;
+      max-height: 60px;
+      background-image: url(/images/arrow-down.png);
+      background-size: 100%;
+      background-repeat: no-repeat;
+      margin-left: 5%;
+    }
+  }
+
+  &__container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 68vw;
+
+    @media only screen and (max-width: $tablet) and (min-width: $mobile){
+      height: 100vh;
+    }
+    
+
+    .thumb {
+      opacity: 0.4;
+      margin-right: 2%;
+      width: 33%;
+      &:last-child {
+        margin-right: 0;
+      }
+      img {
+        width: 100%;
+      }
+    }
+    .text {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 5vw;
+      z-index: 10;
+      @media only screen and (max-width: $tablet) and (min-width: $mobile){
+        display: none;
+      }
+    }
+    .buttons__overlay {
+      position: absolute;
+      z-index: 11;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      .thumb {
+        width: 33%;
+        height: 100%;
+        &:hover {
+          //background-color: red;
+        }
+      }
+    }
+
+    @media only screen and (max-width: $tablet){
+      .thumb {
+        opacity: 1;
+      }
+    }
+
+    @media only screen and (max-width: $mobile) {
+      display: block;
+      height: inherit;
+      width: 100%;
+      min-width: inherit;
+      .thumb {
+        width: 100%;
+        opacity: 1;
+        margin-bottom: 30px; 
+      }
+      .text {
+        position: relative;
+        font-size: 50px;
+      }
+      .buttons__overlay {
+        display: none;
+      }
+    }
+
+  }
+}
+
+footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  a {
+    color: black;
+    text-decoration: underline;
+    font-size: 18px;
+  }
+  span {
+    color: black;
+    font-size: 12px;
+  }
+  @media only screen and (max-width: $mobile) {
+    a {
+      margin: 0;
+      font-size: 14px;
+    }
+    span {
+      display: none;
+    }
+  }
+}
+
+

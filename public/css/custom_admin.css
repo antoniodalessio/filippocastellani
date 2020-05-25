@@ -1,0 +1,8 @@
+.logo-mini img, .logo-lg img {
+  width: 30px;
+}
+
+.has-many-contents .row {
+  margin-right: 0;
+  margin-left: 0;
+}
