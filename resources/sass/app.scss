@@ -1,57 +1,68 @@
 //
 // Fonts
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,800);
+
+
+// @font-face {
+//   font-family: 'icomoon';
+//   src:  url('icomoon.eot?spznif');
+//   src:  url('icomoon.eot?spznif#iefix') format('embedded-opentype'),
+//     url('icomoon.ttf?spznif') format('truetype'),
+//     url('icomoon.woff?spznif') format('woff'),
+//     url('icomoon.svg?spznif#icomoon') format('svg');
+//   font-weight: normal;
+//   font-style: normal;
+// }
 
 @font-face {
-  font-family: 'icomoon';
-  src:  url('icomoon.eot?spznif');
-  src:  url('icomoon.eot?spznif#iefix') format('embedded-opentype'),
-    url('icomoon.ttf?spznif') format('truetype'),
-    url('icomoon.woff?spznif') format('woff'),
-    url('icomoon.svg?spznif#icomoon') format('svg');
-  font-weight: normal;
+  font-family: 'HK Grotesk';
+  src: url('../fonts/HKGrotesk-Light.woff2') format('woff2'),
+      url('../fonts/HKGrotesk-Light.woff') format('woff'),
+      url('../fonts/HKGrotesk-Light.ttf') format('truetype'),
+      url('../fonts/HKGrotesk-Light.svg#HKGrotesk-Light') format('svg');
+  font-weight: 300;
   font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
 
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+// [class^="icon-"], [class*=" icon-"] {
+//   /* use !important to prevent issues with browser extensions that change fonts */
+//   font-family: 'icomoon' !important;
+//   speak: none;
+//   font-style: normal;
+//   font-weight: normal;
+//   font-variant: normal;
+//   text-transform: none;
+//   line-height: 1;
 
-.icon-ancora_intera:before {
-  content: "\e903";
-}
-.icon-favicon:before {
-  content: "\e904";
-}
-.icon-behance:before {
-  content: "\e905";
-}
-.icon-instagram:before {
-  content: "\e906";
-}
-.icon-rosa:before {
-  content: "\e907";
-}
-.icon-logo:before {
-  content: "\e900";
-}
-.icon-chiudi:before {
-  content: "\e901";
-}
-.icon-hamburger:before {
-  content: "\e902";
-}
+//   /* Better Font Rendering =========== */
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+// }
+
+// .icon-ancora_intera:before {
+//   content: "\e903";
+// }
+// .icon-favicon:before {
+//   content: "\e904";
+// }
+// .icon-behance:before {
+//   content: "\e905";
+// }
+// .icon-instagram:before {
+//   content: "\e906";
+// }
+// .icon-rosa:before {
+//   content: "\e907";
+// }
+// .icon-logo:before {
+//   content: "\e900";
+// }
+// .icon-chiudi:before {
+//   content: "\e901";
+// }
+// .icon-hamburger:before {
+//   content: "\e902";
+// }
 
 // Variables
 @import "reset";
@@ -66,13 +77,13 @@ $logo-height: 51px;
 $headerHeight: 90px;
 $footerHeight: 18px;
 
-$tablet: 1367px;
+$tablet: 1024px;
 $mobile: 480px;
 
 body {
+  font-family: 'HK Grotesk';
 	background-color: $body-bg;
 	color: black;
-  font-family: 'Open Sans', sans-serif;
   padding: $margin-body-desktop;
   @media only screen and (max-width: $mobile) {
     padding: $margin-body-mobile;
@@ -93,10 +104,22 @@ strong {
 
 
 .page {
+  //position: relative;
+  opacity: 0;
+  transform: translateY(25px);
   display: flex;
   align-items: center;
   justify-content: center;
   height: calc(100vh - #{$headerHeight} - #{$footerHeight});
+  &.loaded {
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 1s ease, opacity 1s ease;
+    .text {
+      transform: translateY(0);
+      transition: transform 1s ease;
+    }
+  }
   @media only screen and (max-width: $tablet) {
     flex-direction: column;
     height: inherit;
@@ -106,7 +129,10 @@ strong {
   }
 
   .bigtext__container {
+    position: relative;
+    width: 100%;
     display: none;
+    justify-content: center;
     height: calc(100vh - #{$headerHeight});
     .bigtext__text {
       position: relative;
@@ -119,16 +145,15 @@ strong {
     }
     .arrow-down {
       position: absolute;
-      bottom: 30px;
       left: 0;
+      bottom: 0;
       width: 5vw;
       height: calc(5vw / 0.6);
       max-width: 40px;
       max-height: 60px;
-      background-image: url(/images/arrow-down.png);
+      background-image: url(../images/arrow-down.png);
       background-size: 100%;
       background-repeat: no-repeat;
-      margin-left: 5%;
     }
   }
 
@@ -136,7 +161,7 @@ strong {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     width: 68vw;
 
     @media only screen and (max-width: $tablet) and (min-width: $mobile){
@@ -146,20 +171,18 @@ strong {
 
     .thumb {
       opacity: 0.4;
-      margin-right: 2%;
-      width: 33%;
-      &:last-child {
-        margin-right: 0;
-      }
+      cursor: cell;
+      width: 32%;
       img {
         width: 100%;
       }
     }
     .text {
       position: absolute;
-      top: 0;
+      //top: 0;
+      transform: translateY(50px);
       left: 0;
-      font-size: 5vw;
+      font-size: 5.8vw;
       z-index: 10;
       @media only screen and (max-width: $tablet) and (min-width: $mobile){
         display: none;
@@ -176,9 +199,6 @@ strong {
       .thumb {
         width: 33%;
         height: 100%;
-        &:hover {
-          //background-color: red;
-        }
       }
     }
 
@@ -196,11 +216,13 @@ strong {
       .thumb {
         width: 100%;
         opacity: 1;
-        margin-bottom: 30px; 
+        margin-bottom: 50px; 
       }
       .text {
         position: relative;
-        font-size: 50px;
+        font-size: 32px;
+        line-height: 40px;
+        margin-bottom: 50px; 
       }
       .buttons__overlay {
         display: none;

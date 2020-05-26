@@ -29,9 +29,9 @@
 
 	<div class="page__container">
 		<div class="thumb thumb_0">
-			<img src="/images/first.jpg" />
-			<img src="/images/second.jpg" />
-			<img src="/images/third.jpg" />
+			<img src="{{ asset('images/first.jpg') }}" />
+			<img src="{{ asset('images/second.jpg') }}" />
+			<img src="{{ asset('images/third.jpg') }}" />
 		</div>
 		<div class="text">
 			A studio for <br> product design always <br>
@@ -41,14 +41,14 @@
 			unexpected objects.
 		</div>
 		<div class="thumb thumb_1">
-			<img src="/images/second.jpg" />
-			<img src="/images/first.jpg" />
-			<img src="/images/third.jpg" />
+			<img src="{{ asset('images/second.jpg') }}" />
+			<img src="{{ asset('images/first.jpg') }}" />
+			<img src="{{ asset('images/third.jpg') }}" />
 		</div>
 		<div class="thumb thumb_2">
-			<img src="/images/third.jpg" />
-			<img src="/images/second.jpg" />
-			<img src="/images/first.jpg" />
+			<img src="{{ asset('images/third.jpg') }}" />
+			<img src="{{ asset('images/second.jpg') }}" />
+			<img src="{{ asset('images/first.jpg') }}" />
 		</div>
 		<div class="buttons__overlay">
 			<div class="thumb"></div>
