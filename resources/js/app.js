@@ -18,29 +18,15 @@ function isMobile() {
 	return false
 }
 
-
-
-
+$(window).on("load", function(){
+	$('.page').addClass('loaded')
+})
 
 $(document).ready( () => {
 
 	var imgLength = $(".thumb img").length;
 	var tmpLength = 0;
-
-	console.log(imgLength)
-
-	$(".thumb img").one("load", function() {
-		// do stuff
-	  }).each(function() {
-		if(this.complete) {
-			tmpLength++;
-			if (tmpLength == imgLength) {
-				console.log('complete')
-				$('.page').addClass('loaded')
-			}
-		}
-	  });
-
+	
 	var $pageContainer = $('.page__container');
 
 	var $buttons = $pageContainer.find(".buttons__overlay .thumb")
@@ -69,19 +55,17 @@ $(document).ready( () => {
 	$buttons.on('mouseover', function() {
 		var index = $(this).index()
 		var $associateThumb = $pageContainer.find('> .thumb').eq(index);
-		$associateThumb.animate({'opacity': 1}, 1000,function() {
-			console.log("complete opacity", )
-			$associateThumb.slick('slickNext')
-			$associateThumb.slick('slickPlay')
-		}).css("z-index", 11)
-		
+		$associateThumb.slick('slickPlay')
+		//$associateThumb.slick('slickNext')
+		$associateThumb.css({"z-index": 11, opacity: 1}).addClass('hover')
 	})
 
 	$buttons.on('mouseleave', function() {
 		var index = $(this).index()
 		var $associateThumb = $pageContainer.find('> .thumb').eq(index);
-		$associateThumb.animate({'opacity': 0.5}).css("z-index", 1)
+		$associateThumb.animate({'opacity': 0.5}).css("z-index", 1).removeClass('hover')
 		$associateThumb.slick('slickPause')
+		$associateThumb.slick('slickGoTo', 0)
 	})
 
 	if (isMobile()) {
@@ -89,6 +73,20 @@ $(document).ready( () => {
 		detectIsInViewport('_1')
 		detectIsInViewport('_2')
 	}
+
+	$('.arrow-up').on('click', function() {
+		$("html, body").animate({ 
+            scrollTop: 0 
+        }, "slow");
+        return false;
+	})
+
+	$('.arrow-down').on('click', function() {
+		$("html, body").animate({ 
+            scrollTop: $(document).height()
+        }, "slow");
+        return false;
+	})
 
 });
 

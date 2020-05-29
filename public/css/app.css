@@ -1,6 +1,6 @@
 @font-face {
   font-family: "HK Grotesk";
-  src: url("../fonts/HKGrotesk-Light.woff2") format("woff2"), url("../fonts/HKGrotesk-Light.woff") format("woff"), url("../fonts/HKGrotesk-Light.ttf") format("truetype"), url("../fonts/HKGrotesk-Light.svg#HKGrotesk-Light") format("svg");
+  src: url("../fonts/HKGrotesk-Light.woff") format("woff"), url("../fonts/HKGrotesk-Light.ttf") format("truetype"), url("../fonts/HKGrotesk-Light.svg#HKGrotesk-Light") format("svg");
   font-weight: 300;
   font-style: normal;
 }
@@ -175,11 +175,11 @@ body {
   font-family: "HK Grotesk";
   background-color: #ffffff;
   color: black;
-  padding: 20px;
+  padding: 2.54vw 3vw 0 3vw;
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 769px) {
   body {
-    padding: 5%;
+    padding: 10vw 12vw 12vw 12vw;
   }
 }
 
@@ -196,6 +196,7 @@ strong {
 header {
   display: flex;
   justify-content: flex-end;
+  position: relative;
 }
 header .logo {
   width: 120px;
@@ -203,9 +204,18 @@ header .logo {
 header .logo img {
   width: 100%;
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 769px) {
   header {
-    margin-bottom: 100px;
+    margin-bottom: 17.2vw;
+  }
+  header .logo {
+    width: 120px;
+  }
+}
+@media only screen and (max-width: 1024px) and (min-width: 769px) {
+  header {
+    position: fixed;
+    width: calc(100vw - 2.54vw*2);
   }
 }
 
@@ -215,7 +225,19 @@ header .logo img {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 90px - 18px);
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+@media only screen and (max-width: 1024px) {
+  .page {
+    position: relative;
+    z-index: 10;
+  }
 }
 .page.loaded {
   transform: translateY(0);
@@ -232,7 +254,7 @@ header .logo img {
     height: inherit;
   }
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 769px) {
   .page {
     height: inherit;
   }
@@ -242,14 +264,13 @@ header .logo img {
   width: 100%;
   display: none;
   justify-content: center;
-  height: calc(100vh - 90px);
+  height: calc(100vh - 2.54vw);
 }
 .page .bigtext__container .bigtext__text {
   position: relative;
-  font-size: 5vw;
-  margin-bottom: 90px;
+  font-size: 6.5vw;
 }
-@media only screen and (max-width: 1024px) and (min-width: 480px) {
+@media only screen and (max-width: 1024px) and (min-width: 769px) {
   .page .bigtext__container {
     display: flex;
     align-items: center;
@@ -258,7 +279,7 @@ header .logo img {
 .page .bigtext__container .arrow-down {
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: 5.08vw;
   width: 5vw;
   height: calc(5vw / 0.6);
   max-width: 40px;
@@ -272,31 +293,64 @@ header .logo img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 68vw;
+  width: 62.3vw;
 }
-@media only screen and (max-width: 1024px) and (min-width: 480px) {
+@media only screen and (max-width: 1024px) and (min-width: 769px) {
   .page__container {
     height: 100vh;
+    width: 86vw;
   }
 }
 .page__container .thumb {
   opacity: 0.4;
   cursor: cell;
   width: 32%;
+  position: relative;
+}
+.page__container .thumb.hover {
+  background-color: white;
 }
 .page__container .thumb img {
   width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+.page__container .thumb.thumb_1 {
+  margin-bottom: 0;
 }
 .page__container .text {
   position: absolute;
   transform: translateY(50px);
   left: 0;
-  font-size: 5.8vw;
+  font-size: 5vw;
   z-index: 10;
+  line-height: 5.3vw;
+  margin-left: 5px;
 }
-@media only screen and (max-width: 1024px) and (min-width: 480px) {
+@media only screen and (max-width: 1024px) and (min-width: 769px) {
   .page__container .text {
     display: none;
+  }
+}
+.page__container .logo-trio {
+  display: none;
+  position: relative;
+}
+@media only screen and (max-width: 769px) {
+  .page__container .logo-trio {
+    display: block;
+    height: 13.75vw;
+  }
+  .page__container .logo-trio .image {
+    display: block;
+    position: absolute;
+    bottom: 8vw;
+    right: 1.5vw;
+    background-image: url(../images/logo-trio.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 14.14vw;
+    height: 14.25vw;
   }
 }
 .page__container .buttons__overlay {
@@ -317,7 +371,7 @@ header .logo img {
     opacity: 1;
   }
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 769px) {
   .page__container {
     display: block;
     height: inherit;
@@ -327,13 +381,13 @@ header .logo img {
   .page__container .thumb {
     width: 100%;
     opacity: 1;
-    margin-bottom: 50px;
+    margin-bottom: 13.75vw;
   }
   .page__container .text {
     position: relative;
-    font-size: 32px;
-    line-height: 40px;
-    margin-bottom: 50px;
+    font-size: 7.3vw;
+    line-height: 9vw;
+    margin-bottom: 13.75vw;
   }
   .page__container .buttons__overlay {
     display: none;
@@ -342,25 +396,76 @@ header .logo img {
 
 footer {
   width: 100%;
+  position: fixed;
+  bottom: 2.54vw;
+  left: 0;
+  padding: 0 3vw 0 3vw;
+  box-sizing: border-box;
+}
+footer .desktop {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+footer .mobile {
+  display: none;
+}
 footer a {
   color: black;
   text-decoration: underline;
-  font-size: 18px;
+  font-size: 22px;
 }
 footer span {
   color: black;
-  font-size: 12px;
+  font-size: 14px;
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 1024px) {
+  footer {
+    position: relative;
+  }
+}
+@media only screen and (max-width: 769px) {
+  footer {
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    position: relative;
+  }
+  footer .desktop {
+    display: none;
+  }
+  footer .mobile {
+    display: block;
+    text-align: right;
+  }
+  footer .mobile span {
+    font-size: 4vw;
+    margin-top: 13vw;
+    width: 100%;
+    display: block;
+  }
+  footer .footer-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  footer .social-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 14vw;
+  }
+  footer .arrow-up {
+    display: block;
+    width: 9.3vw;
+    height: 14vw;
+    background-image: url(../images/arrow-down.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    transform: rotate(180deg);
+  }
   footer a {
     margin: 0;
-    font-size: 14px;
-  }
-  footer span {
-    display: none;
+    font-size: 5.5vw;
+    line-height: 6.5vw;
   }
 }

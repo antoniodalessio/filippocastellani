@@ -15,8 +15,7 @@
 
 @font-face {
   font-family: 'HK Grotesk';
-  src: url('../fonts/HKGrotesk-Light.woff2') format('woff2'),
-      url('../fonts/HKGrotesk-Light.woff') format('woff'),
+  src: url('../fonts/HKGrotesk-Light.woff') format('woff'),
       url('../fonts/HKGrotesk-Light.ttf') format('truetype'),
       url('../fonts/HKGrotesk-Light.svg#HKGrotesk-Light') format('svg');
   font-weight: 300;
@@ -71,22 +70,25 @@
 
 @import "node_modules/slick-carousel/slick/slick.scss";
 
-$margin-body-desktop: 20px;
-$margin-body-mobile: 5%;
+
+$logoRatio: 2.43;
+
+$margin-body-desktop-top: 2.54vw;
+$margin-body-desktop-left: 3vw;
 $logo-height: 51px;
 $headerHeight: 90px;
 $footerHeight: 18px;
 
 $tablet: 1024px;
-$mobile: 480px;
+$mobile: 769px;
 
 body {
   font-family: 'HK Grotesk';
 	background-color: $body-bg;
 	color: black;
-  padding: $margin-body-desktop;
+  padding: $margin-body-desktop-top $margin-body-desktop-left 0 $margin-body-desktop-left;
   @media only screen and (max-width: $mobile) {
-    padding: $margin-body-mobile;
+    padding: 10vw 12vw 12vw 12vw;
   }
 }
 
@@ -103,14 +105,24 @@ strong {
 @import "header";
 
 
+
 .page {
-  //position: relative;
   opacity: 0;
   transform: translateY(25px);
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - #{$headerHeight} - #{$footerHeight});
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  @media only screen and (max-width: $tablet) {
+    position: relative;
+    z-index: 10;
+  }
   &.loaded {
     transform: translateY(0);
     opacity: 1;
@@ -133,11 +145,11 @@ strong {
     width: 100%;
     display: none;
     justify-content: center;
-    height: calc(100vh - #{$headerHeight});
+    height: calc(100vh - #{$margin-body-desktop-top});
     .bigtext__text {
       position: relative;
-      font-size: 5vw;
-      margin-bottom: $headerHeight;
+      font-size: 6.5vw;
+      //margin-bottom: $headerHeight;
     }
     @media only screen and (max-width: $tablet) and (min-width: $mobile) {
       display: flex;
@@ -146,7 +158,7 @@ strong {
     .arrow-down {
       position: absolute;
       left: 0;
-      bottom: 0;
+      bottom: $margin-body-desktop-top * 2;
       width: 5vw;
       height: calc(5vw / 0.6);
       max-width: 40px;
@@ -162,32 +174,65 @@ strong {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 68vw;
+    width: 62.3vw;
 
     @media only screen and (max-width: $tablet) and (min-width: $mobile){
       height: 100vh;
+      width: 86vw;
     }
-    
-
     .thumb {
       opacity: 0.4;
       cursor: cell;
       width: 32%;
+      position: relative;
+      &.hover {
+        background-color: white;
+        //transition: all 0.5s ease;
+      }
       img {
         width: 100%;
+        height: 100%;
+        box-sizing: border-box;
       }
+    }
+    .thumb.thumb_1 {
+      margin-bottom: 0;
     }
     .text {
       position: absolute;
-      //top: 0;
       transform: translateY(50px);
       left: 0;
-      font-size: 5.8vw;
+      font-size: 5vw;
       z-index: 10;
+      line-height: 5.3vw;
+      margin-left: 5px;
       @media only screen and (max-width: $tablet) and (min-width: $mobile){
         display: none;
       }
     }
+
+    .logo-trio {
+      display: none;
+      position: relative;
+      @media only screen and (max-width: $mobile) {
+        display: block;
+        height: 13.75vw; 
+        .image {
+          display: block;
+          position: absolute;
+          bottom: 8vw;
+          right: 1.5vw;
+          background-image: url(../images/logo-trio.png);
+          background-size: 100%;
+          background-repeat: no-repeat;
+          width: 14.14vw;
+          height: 14.25vw;
+        }
+      }
+    }
+
+
+
     .buttons__overlay {
       position: absolute;
       z-index: 11;
@@ -216,13 +261,13 @@ strong {
       .thumb {
         width: 100%;
         opacity: 1;
-        margin-bottom: 50px; 
+        margin-bottom: 13.75vw; 
       }
       .text {
         position: relative;
-        font-size: 32px;
-        line-height: 40px;
-        margin-bottom: 50px; 
+        font-size: 7.3vw;
+        line-height: 9vw;
+        margin-bottom: 13.75vw; 
       }
       .buttons__overlay {
         display: none;
@@ -232,29 +277,5 @@ strong {
   }
 }
 
-footer {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  a {
-    color: black;
-    text-decoration: underline;
-    font-size: 18px;
-  }
-  span {
-    color: black;
-    font-size: 12px;
-  }
-  @media only screen and (max-width: $mobile) {
-    a {
-      margin: 0;
-      font-size: 14px;
-    }
-    span {
-      display: none;
-    }
-  }
-}
 
-
+@import "footer";

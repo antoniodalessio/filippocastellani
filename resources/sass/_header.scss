@@ -1,6 +1,7 @@
 header {
   display: flex;
   justify-content: flex-end;
+  position: relative;
   .logo {
     width: 120px;
     img {
@@ -8,7 +9,21 @@ header {
     }
   }
 
-	@media only screen and (max-width:480px) {
-    margin-bottom: 100px;
+  //mobile
+	@media only screen and (max-width:$mobile) {
+    margin-bottom: 17.2vw;
+    .logo {
+      width: 120px;//26vw;
+    }
   }
+
+  //tablet
+  @media only screen and (max-width: $tablet) and (min-width: $mobile){
+    position: fixed;
+    width: calc(100vw - 2.54vw*2);
+    .logo {
+     
+    }
+  }
+
 }

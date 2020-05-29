@@ -13,6 +13,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+if (env('LOCALIZATION')) {
+	Route::get('/', [
+		'as' => 'page', 
+		'uses' => 'PageController@indexLocal',
+	]);
+}else{
+	Route::get('/', [
+		'as' => 'page', 
+		'uses' => 'PageController@index',
+	]);
+}
+
+
+if (env('LOCALIZATION')) {
+	Route::get('{lang}/{pageName}', [ 
+		'as' => 'page', 
+		'uses' => 'PageController@indexLocal'
+	]);
+}else{
+	Route::get('{pageName}', [ 
+		'as' => 'page', 
+		'uses' => 'PageController@index'
+	]);
+
+	Route::get('progetti/{pageName}', [ 
+		'as' => 'project', 
+		'uses' => 'ProjectController@index'
+	]);
+}
