@@ -173,6 +173,7 @@ a {
 
 body {
   font-family: "HK Grotesk";
+  -webkit-font-smoothing: antialiased;
   background-color: #ffffff;
   color: black;
   padding: 2.54vw 3vw 0 3vw;
@@ -215,7 +216,11 @@ header .logo img {
 @media only screen and (max-width: 1024px) and (min-width: 769px) {
   header {
     position: fixed;
-    width: calc(100vw - 2.54vw*2);
+    width: 100%;
+    top: 2.54vw;
+    left: 0;
+    padding: 0 3vw 0 3vw;
+    box-sizing: border-box;
   }
 }
 
@@ -265,6 +270,8 @@ header .logo img {
   display: none;
   justify-content: center;
   height: calc(100vh - 2.54vw);
+  box-sizing: border-box;
+  padding-bottom: 2.54vw;
 }
 .page .bigtext__container .bigtext__text {
   position: relative;
@@ -279,7 +286,7 @@ header .logo img {
 .page .bigtext__container .arrow-down {
   position: absolute;
   left: 0;
-  bottom: 5.08vw;
+  bottom: 2.54vw;
   width: 5vw;
   height: calc(5vw / 0.6);
   max-width: 40px;
@@ -297,8 +304,10 @@ header .logo img {
 }
 @media only screen and (max-width: 1024px) and (min-width: 769px) {
   .page__container {
-    height: 100vh;
+    height: calc(100vh - 2.54vw);
     width: 86vw;
+    padding-top: 2.54vw;
+    box-sizing: border-box;
   }
 }
 .page__container .thumb {
@@ -344,13 +353,13 @@ header .logo img {
   .page__container .logo-trio .image {
     display: block;
     position: absolute;
-    bottom: 8vw;
+    bottom: 10vw;
     right: 1.5vw;
     background-image: url(../images/logo-trio.png);
     background-size: 100%;
     background-repeat: no-repeat;
-    width: 14.14vw;
-    height: 14.25vw;
+    width: 16.14vw;
+    height: 100%;
   }
 }
 .page__container .buttons__overlay {
@@ -422,6 +431,7 @@ footer span {
 @media only screen and (max-width: 1024px) {
   footer {
     position: relative;
+    padding: 0;
   }
 }
 @media only screen and (max-width: 769px) {

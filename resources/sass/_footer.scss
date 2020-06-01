@@ -24,6 +24,7 @@ footer {
     }
     @media only screen and (max-width: $tablet) {
         position: relative;
+        padding: 0;
     }
     @media only screen and (max-width: $mobile) {
         .desktop {

@@ -20,7 +20,11 @@ header {
   //tablet
   @media only screen and (max-width: $tablet) and (min-width: $mobile){
     position: fixed;
-    width: calc(100vw - 2.54vw*2);
+    width: 100%;
+    top: 2.54vw;
+    left: 0;
+    padding: 0 3vw 0 3vw;
+    box-sizing: border-box;
     .logo {
      
     }
