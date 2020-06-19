@@ -30,17 +30,17 @@
 
   <footer>
       <div class="desktop">
-        <a href="" >be in touch</a>
+        <a href="mailto:info@filippocastellani.com" >be in touch</a>
         <span>© 2020 All right reserved</span>
-        <a href="" >instagram</a>
+        <a href="https://www.instagram.com/Byfilippocastellani/" target="_blank" rel="nofollow">instagram</a>
       </div>
 
       <div class="mobile">
         <div class="footer-container">
           <div class="arrow-up" ></div>
           <div class="social-container">
-            <a href="" >be in touch</a>
-            <a href="" >instagram</a>
+            <a href="mailto:info@filippocastellani.com" >be in touch</a>
+            <a href="https://www.instagram.com/Byfilippocastellani/" target="_blank" rel="nofollow">instagram</a>
           </div>
         </div>
         <span>© 2020 All right reserved</span>

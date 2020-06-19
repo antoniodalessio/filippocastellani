@@ -121,6 +121,7 @@ class ProjectsController extends Controller
     {
         $form = new Form(new Project);
         $form->text('name', 'name');
+        $form->text('transition_time', "Transition time (in millisecondi)");
 
         $form->hasMany('images', 'Immagini', function (Form\NestedForm $form) {
             $form->image('uri')->name(function ($file) {

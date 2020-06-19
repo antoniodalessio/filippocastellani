@@ -16,15 +16,19 @@ footer {
     a {
       color: black;
       text-decoration: underline;
-      font-size: 22px;
+      font-size: 20px;
+      &:hover {
+          color: #999;
+      }
     }
     span {
       color: black;
-      font-size: 14px;
+      font-size: 12px;
     }
     @media only screen and (max-width: $tablet) {
         position: relative;
         padding: 0;
+        
     }
     @media only screen and (max-width: $mobile) {
         .desktop {
@@ -34,8 +38,8 @@ footer {
             display: block;
             text-align: right;
             span {
-                font-size: 4vw;
-                margin-top: 13vw;
+                font-size: 12px;
+                margin-top: 30px;
                 width: 100%;
                 display: block;
             }
@@ -53,12 +57,12 @@ footer {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            height: 14vw;
+            height: 44px;
         }
         .arrow-up {
             display: block;
-            width: 9.3vw;
-            height: 14vw;
+            width: 29px;
+            height: 44px;
             background-image: url(../images/arrow-down.png);
             background-size: 100%;
             background-repeat: no-repeat;
@@ -66,8 +70,6 @@ footer {
         }
         a {
             margin: 0;
-            font-size: 5.5vw;
-            line-height: 6.5vw;
         }
     }
   }

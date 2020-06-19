@@ -3,7 +3,7 @@ header {
   justify-content: flex-end;
   position: relative;
   .logo {
-    width: 120px;
+    width: 110px;
     img {
       width: 100%;
     }
@@ -12,22 +12,16 @@ header {
   //mobile
 	@media only screen and (max-width:$mobile) {
     margin-bottom: 17.2vw;
-    .logo {
-      width: 120px;//26vw;
-    }
   }
 
   //tablet
   @media only screen and (max-width: $tablet) and (min-width: $mobile){
     position: fixed;
     width: 100%;
-    top: 2.54vw;
+    top: $margin-body-desktop-top;
     left: 0;
-    padding: 0 3vw 0 3vw;
+    padding: 0 $margin-body-desktop-top 0 $margin-body-desktop-top;
     box-sizing: border-box;
-    .logo {
-     
-    }
   }
 
 }

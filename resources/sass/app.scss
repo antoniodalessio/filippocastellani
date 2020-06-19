@@ -73,8 +73,8 @@
 
 $logoRatio: 2.43;
 
-$margin-body-desktop-top: 2.54vw;
-$margin-body-desktop-left: 3vw;
+$margin-body-desktop-top: 45px; //old: 2.54vw
+$margin-body-desktop-left: 45px; // old: 3vw
 $logo-height: 51px;
 $headerHeight: 90px;
 $footerHeight: 18px;
@@ -88,9 +88,6 @@ body {
 	background-color: $body-bg;
 	color: black;
   padding: $margin-body-desktop-top $margin-body-desktop-left 0 $margin-body-desktop-left;
-  @media only screen and (max-width: $mobile) {
-    padding: 10vw 12vw 12vw 12vw;
-  }
 }
 
 hr {
@@ -106,6 +103,47 @@ strong {
 @import "header";
 
 
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scale-x-zero-to-max {
+  0% {
+      transform: scaleX(0);
+  }
+
+  99% {
+      transform: scaleX(1);
+  }
+}
+
+
+.site-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  display: none;
+  
+  .loader {
+    width: 50px;
+    height: 50px;
+    background-image: url(../images/logo-trio.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    animation: rotating 2s linear infinite
+  }
+}
 
 .page {
   opacity: 0;
@@ -124,6 +162,9 @@ strong {
     position: relative;
     z-index: 10;
   }
+  @media only screen and (max-width: $mobile) {
+    margin-bottom: $margin-body-desktop-top
+  }
   &.loaded {
     transform: translateY(0);
     opacity: 1;
@@ -141,6 +182,7 @@ strong {
     height: inherit;
   }
 
+
   .bigtext__container {
     position: relative;
     width: 100%;
@@ -148,7 +190,7 @@ strong {
     justify-content: center;
     height: calc(100vh - #{$margin-body-desktop-top});
     box-sizing: border-box;
-    padding-bottom: 2.54vw;
+    padding-bottom: $margin-body-desktop-top;
     .bigtext__text {
       position: relative;
       font-size: 6.5vw;
@@ -181,27 +223,55 @@ strong {
     @media only screen and (max-width: $tablet) and (min-width: $mobile){
       height: calc(100vh - #{$margin-body-desktop-top});
       width: 86vw;
-      padding-top: $margin-body-desktop-top;
       box-sizing: border-box;
+    }
+    .thumb-image {
+      &:before {
+        content: '';
+        width: 100%;
+        height: 0;
+        background-color: #000;
+        display: block;
+        position: relative;
+        transform: scaleX(0);
+        transform-origin: left 50%;
+        border-top: 2px solid black;
+      }
+      &.progress:before {
+
+      }
+      &.no-transition:before {
+        transition: none;
+      }
     }
     .thumb {
       opacity: 0.4;
-      cursor: cell;
+      cursor: crosshair;
       width: 32%;
       position: relative;
       &.hover {
         background-color: white;
-        //transition: all 0.5s ease;
+        transition: all 0.5s ease;
       }
+      
       img {
         width: 100%;
         height: 100%;
         box-sizing: border-box;
+        vertical-align: middle;
+        display: block;
       }
     }
     .thumb.thumb_1 {
       margin-bottom: 0;
     }
+
+    @media only screen and (max-width: $mobile){
+      .thumb.thumb_2 {
+        //padding-bottom: $margin-body-desktop-top;
+      }
+    }
+
     .text {
       position: absolute;
       transform: translateY(50px);
@@ -248,6 +318,9 @@ strong {
       .thumb {
         width: 33%;
         height: 100%;
+      }
+      @media only screen and (max-width: $tablet){
+        display: none;
       }
     }
 
